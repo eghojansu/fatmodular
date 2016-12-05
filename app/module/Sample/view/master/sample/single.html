@@ -1,0 +1,36 @@
+<div class="panel panel-primary panel-main">
+    <div class="panel-heading clearfix">
+        <div class="pull-right">
+            <form class="form-inline" data-form-connect="[data-form=desktop]">
+                <div class="form-group">
+                    <select data-utilize="select2" class="form-control" data-url="{{ @search|path }}" data-placeholder="search keyword"></select>
+                </div>
+            </form>
+        </div>
+
+        <h1>Data Sample</h1>
+    </div>
+    <div class="panel-body">
+
+        {{ @form->open() }}
+            {{ @form->hidden('id') }}
+            {{ @form->rowOpen() }}
+                {{ @form->row('text', 'name', null, [], ['control-class'=>'col-sm-3']) }}
+            {{ @form->rowClose() }}
+            {{ @form->rowOpen() }}
+                <div class="col-sm-10 col-sm-offset-2">
+                    <button type="submit" class="btn btn-info" disabled><i class="fa fa-check"></i> {{ @crud.save }}</button>
+                    <button type="reset" class="btn btn-default" disabled><i class="fa fa-ban"></i> {{ @crud.reset }}</button>
+                    <a href="#new" class="btn btn-primary"><i class="fa fa-pencil"></i> {{ @crud.create }}</a>
+                    <a href="#delete" class="btn btn-danger disabled"><i class="fa fa-trash"></i> {{ @crud.delete }}</a>
+
+                    <div class="btn btn-group">
+                        <a href="#prev" class="btn btn-default disabled"><i class="fa fa-chevron-left"></i> {{ @crud.prev }}</a>
+                        <a href="#next" class="btn btn-default disabled">{{ @crud.next }} <i class="fa fa-chevron-right"></i></a>
+                    </div>
+                </div>
+            {{ @form->rowClose() }}
+        {{ @form->close() }}
+
+    </div>
+</div>

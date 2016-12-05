@@ -1,0 +1,14 @@
+<div class="row crud-info">
+    <div class="col-sm-5">
+        <div class="entries-info">
+            <set s="{{ ((@data.pos?:1)-1)*@data.limit+1 }}" />
+            <set e="{{ @s+@data.limit-1 }}" />
+            Showing {{ @s }} to {{ @e }} of {{ @data.total }} entries
+        </div>
+    </div>
+    <div class="col-sm-7 text-right">
+        <nav aria-label="Page navigation">
+          {{ @pagination->render() }}
+        </nav>
+    </div>
+</div>

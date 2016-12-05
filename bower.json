@@ -1,0 +1,55 @@
+{
+  "name": "fatmodular",
+  "authors": [
+    "Eko Kurniawan <setiawanegho@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/eghojansu/fatmodular",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "vendor"
+  ],
+  "dependencies": {
+    "font-awesome": "^4.7.0",
+    "bootstrap": "^3.3.7",
+    "toastr": "^2.1.3",
+    "spectrum": "bgrins/spectrum#^1.8.0",
+    "jquery.inputmask": "^3.3.3",
+    "autoNumeric": "^1.9.46",
+    "select2": "^4.0.3",
+    "select2-bootstrap-theme": "^0.1.0-beta.9",
+    "bootbox.js": "^4.4.0",
+    "bootstrap-datepicker": "uxsolutions/bootstrap-datepicker#^1.6.4"
+  },
+  "overrides": {
+    "jquery.inputmask": {
+      "main": "dist/jquery.inputmask.bundle.js"
+    },
+    "bootstrap-datepicker": {
+      "main": [
+        "js/bootstrap-datepicker.js",
+        "less/datepicker3.less"
+      ]
+    },
+    "select2": {
+      "main": [
+        "dist/js/select2.full.js",
+        "dist/css/select2.css"
+      ]
+    },
+    "toastr": {
+      "main": [
+        "toastr.js",
+        "toastr.less"
+      ]
+    },
+    "select2-bootstrap-theme": {
+      "main": "src/select2-bootstrap.less"
+    }
+  }
+}

@@ -1,0 +1,43 @@
+<div class="panel panel-primary panel-main">
+    <div class="panel-heading">
+        <h1>Data Sample</h1>
+    </div>
+    <div class="panel-body">
+        <div class="crud-panel">
+            <div class="btn btn-group pull-right">
+                <a href="{{ 'sample_create'|path }}" class="btn btn-primary"><i class="fa fa-pencil"></i> {{ @crud.create }}</a>
+            </div>
+        </div>
+
+        <include href="{{ 'partial.crud_control',@UIROOT|view }}" />
+
+        <set colspan="2" />
+        <table class="table table-condensed table-bordered table-hover table-striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>tools</th>
+                </tr>
+            </thead>
+            <tbody>
+                <repeat group="{{ @data.subset }}" value="{{ @item }}">
+                    <tr>
+                        <td>{{ @item.name }}</td>
+                        <td>
+                            <set p="{{ ['id'=>@item.id] }}" />
+                            <a href="{{ 'sample_update', @p | path }}" class="btn btn-xs btn-info"><i class="fa fa-edit"></i> {{ @crud.update }}</a>
+                            <a data-confirm="delete" href="{{ 'sample_delete', @p | path }}" class="btn btn-xs btn-danger"><i class="fa fa-trash"></i> {{ @crud.delete }}</a>
+                        </td>
+                    </tr>
+                </repeat>
+                <check if="{{ !@data.subset }}">
+                    <tr>
+                        <td colspan="{{ @colspan }}"><em>{{ @crud.empty }}</em></td>
+                    </tr>
+                </check>
+            </tbody>
+        </table>
+
+        <include href="{{ 'partial.crud_info',@UIROOT|view }}" />
+    </div>
+</div>

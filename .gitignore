@@ -1,0 +1,10 @@
+/dev/notes/
+/bower_components/
+/node_modules/
+/dist/
+/vendor/
+/var/
+*.lock
+*.bak
+*.dev
+*.sublime-workspace

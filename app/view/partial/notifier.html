@@ -1,0 +1,7 @@
+<repeat group="{{ @user->getMessage() }}" key="{{ @name }}" value="{{ @items }}">
+    <repeat group="{{ @items }}" value="{{ @item }}">
+        <div class="notifier hide" data-toastr="{{ @name }}">
+            {{ @item }}
+        </div>
+    </repeat>
+</repeat>

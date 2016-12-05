@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="{{ @LOCALE }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="{{ @app.description }}">
+    <meta name="author" content="{{ @app.author | raw }}">
+    <title>{{ @app.name }}</title>
+    <include href="{{ 'pdf.style',@UIROOT|view }}" />
+</head>
+<body>
+    <div class="wrapper">
+        <include href="{{ @VIEW | view }}" />
+    </div>
+</body>
+</html>

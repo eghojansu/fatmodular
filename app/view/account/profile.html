@@ -1,0 +1,28 @@
+<div class="panel panel-primary panel-main">
+    <div class="panel-heading">
+        <h1>Profile</h1>
+    </div>
+    <div class="panel-body">
+        {{ @form->open() }}
+            {~ @w3 = ['control-class'=>'col-sm-3'] ~}
+            {~ @vnull = ['value'=>null] ~}
+            {{ @form->rowOpen() }}
+                {{ @form->row('password', 'plain_password', null, @vnull+['placeholder'=>'password'], @w3) }}
+            {{ @form->rowClose() }}
+            {{ @form->rowOpen() }}
+                {{ @form->row('text', 'username', null, [], @w3) }}
+            {{ @form->rowClose() }}
+            <hr>
+            {{ @form->rowOpen() }}
+                {{ @form->row('password', 'new_password', null, @vnull+['placeholder'=>'password baru'], @w3) }}
+            {{ @form->rowClose() }}
+
+            {{ @form->rowOpen() }}
+                <div class="col-sm-10 col-sm-offset-2">
+                    <button class="btn btn-primary"><i class="fa fa-check"></i> {{ @crud.update }}</button>
+                    <a href="{{ 'dashboard'|path }}" class="btn btn-default"><i class="fa fa-ban"></i> {{ @crud.cancel }}</a>
+                </div>
+            {{ @form->rowClose() }}
+        {{ @form->close() }}
+    </div>
+</div>

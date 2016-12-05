@@ -1,0 +1,64 @@
+.crud-panel {
+    .clearfix();
+
+    .extras {
+        max-width: 400px;
+    }
+}
+
+.crud-control {
+    .clearfix();
+    margin: 20px 0;
+
+    form.form-inline {
+        label {
+            font-weight: normal;
+        }
+    }
+}
+
+.crud-info {
+    .clearfix();
+    margin: 20px 0;
+
+    .pagination {
+        margin: 0;
+    }
+}
+
+.table {
+    th {
+        a {
+            &.sortable, &.asc, &.desc {
+                cursor: pointer;
+                display: block;
+                text-decoration: none;
+
+                .sortable-mixin();
+            }
+
+            &.asc {
+                &:before {
+                    content: "\f0de";
+                    color: @link-color;
+                }
+            }
+
+            &.desc {
+                &:before {
+                    content: "\f0dd";
+                    color: @link-color;
+                }
+            }
+        }
+    }
+}
+
+form .form-error {
+    // color: @brand-danger;
+    font-size: smaller;
+}
+
+[data-form-connect] .select2 {
+    width: 250px !important;
+}

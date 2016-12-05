@@ -1,0 +1,24 @@
+<div class="login-wrapper vmiddle">
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <h1>Login</h1>
+        </div>
+        <div class="panel-body">
+            {{ @form->open() }}
+                {{ @form->rowOpen() }}
+                    {{ @form->row('text','username') }}
+                {{ @form->rowclose() }}
+                {{ @form->rowOpen() }}
+                    {{ @form->row('password','password') }}
+                {{ @form->rowclose() }}
+                <div class="text-center">
+                    <a href="{{ 'homepage'|path }}" class="btn btn-default"><i class="fa fa-ban"></i> {{ @crud.cancel }}</a>
+                    <button class="btn btn-primary"><i class="fa fa-check"></i> Login</button>
+                </div>
+            {{ @form->close() }}
+        </div>
+        <div class="panel-footer text-center">
+            <span><i class="fa fa-lock"></i> Secured Area</span>
+        </div>
+    </div>
+</div>

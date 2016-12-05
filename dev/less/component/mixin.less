@@ -1,0 +1,27 @@
+.fa-bg-before() {
+    &:before {
+        position: absolute;
+        font-family: FontAwesome;
+        font-size: 14px;
+        font-weight: bold;
+    }
+}
+.fa-bg-after() {
+    &:after {
+        position: absolute;
+        font-family: FontAwesome;
+        font-size: 14px;
+        font-weight: bold;
+    }
+}
+
+.sortable-mixin() {
+    .fa-bg-before();
+
+    &:before {
+        position: relative;
+        float: right;
+        content: "\f0dc";
+        color: #ccc;
+    }
+}
