@@ -5,13 +5,10 @@
  */
 class ext
 {
-    private static $collection = [];
-
     public static function getExtensions()
     {
         return [
             'while'=>'_while',
-            'collection'=>'_collection',
         ];
     }
 
@@ -29,24 +26,5 @@ class ext
                 $template->build($node).
                 '<?php '.$template->token($attrib['then']).'; ?>'.
             '<?php endwhile; ?>';
-    }
-
-    public static function _collection(array $node)
-    {
-        $template = Template::instance();
-        $attrib=$node['@attrib'];
-        unset($node['@attrib']);
-
-        if ($attrib['flush']) {
-            $content = static::$collection[$attrib['name']];
-            unset(static::$collection[$attrib['name']]);
-
-            return $content;
-        }
-        else {
-            static::$collection[$attrib['name']] = $template->build($node);
-
-            return '';
-        }
     }
 }

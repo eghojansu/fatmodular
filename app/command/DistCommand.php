@@ -149,6 +149,7 @@ class DistCommand extends AbstractCommand
         ];
         if ($this->input->getOption('no-dev')) {
             array_push($paths, $this->tempDir.'app/command', $this->tempDir.'app/console');
+            array_push($paths, $this->tempDir.'console', $this->tempDir.'console.bat');
         }
         $this->fs->remove($paths);
 
@@ -188,6 +189,8 @@ class DistCommand extends AbstractCommand
         $base = $this->base();
 
         $files = [
+            'console',
+            'console.bat',
             '.htaccess',
             'index.php',
             'composer.json',

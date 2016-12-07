@@ -1,0 +1,5 @@
+@ECHO OFF
+setlocal DISABLEDELAYEDEXPANSION
+SET CONSOLE=%~dp0console
+SET PHP=php
+%PHP% "%CONSOLE%" %*

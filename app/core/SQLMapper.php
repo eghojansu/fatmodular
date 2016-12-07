@@ -8,8 +8,8 @@ use DB\SQL\Mapper;
 
 class SQLMapper extends Mapper implements CursorInterface
 {
+    const ERROR_FIELD_METHOD = 'Undefined field %1$s or method %1$s, has%1$s, get%1$s';
     const ERROR_NOKEY = 'No keys in %s table';
-    const ERROR_NOFIELD = 'No %s fields in %s table';
 
     const TS_CREATE = 'created_at';
     const TS_UPDATE = 'updated_at';
@@ -310,7 +310,7 @@ class SQLMapper extends Mapper implements CursorInterface
                     $v = [];
                     foreach ($value as $k) {
                         if (!$record->exists($k)) {
-                            user_error(sprintf(self::ERROR_NOFIELD, $k, $this->source));
+                            user_error(sprintf(self::E_Field, $k, $this->source));
                         }
                         $v[$k] = $record[$k];
                     }
@@ -319,7 +319,7 @@ class SQLMapper extends Mapper implements CursorInterface
                 $v = call_user_func_array($value, [$record]);
             } else {
                 if (!$record->exists($value)) {
-                    user_error(sprintf(self::ERROR_NOFIELD, $value, $this->source));
+                    user_error(sprintf(self::E_Field, $value, $this->source));
                 }
                 $v = $record[$value];
             }
@@ -400,7 +400,7 @@ class SQLMapper extends Mapper implements CursorInterface
         foreach ($checks as $key) {
             if (!array_key_exists($key, $this->fields)) {
                 if ($triggerError) {
-                    user_error(sprintf(self::ERROR_NOFIELD, $key, $this->source));
+                    user_error(sprintf(self::E_Field, $key, $this->source));
                 } else {
                     return false;
                 }
@@ -448,5 +448,26 @@ class SQLMapper extends Mapper implements CursorInterface
         }
 
         return $filter;
+    }
+
+    /**
+    *   Override get
+    **/
+    public function &get($key) {
+        if ($key=='_id')
+            return $this->_id;
+        elseif (array_key_exists($key,$this->fields))
+            return $this->fields[$key]['value'];
+        elseif (array_key_exists($key,$this->adhoc))
+            return $this->adhoc[$key]['value'];
+        elseif (method_exists($this, $key))
+            return $this->$key();
+        elseif (method_exists($this, $key))
+            return $this->$key();
+        elseif (method_exists($this, ($k='get'.ucfirst($key))))
+            return $this->$k();
+        elseif (method_exists($this, ($k='has'.ucfirst($key))))
+            return $this->$k();
+        user_error(sprintf(self::ERROR_FIELD_METHOD,$key),E_USER_ERROR);
     }
 }

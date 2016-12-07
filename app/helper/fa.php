@@ -257,6 +257,6 @@ final class fa
      */
     public static function view($view, $prefix = '', $suffix = '')
     {
-        return str_replace('.', '/', $prefix.$view).($suffix?:self::$suffix);
+        return str_replace('.', '/', $prefix.$view).($view?($suffix?:self::$suffix):'');
     }
 }

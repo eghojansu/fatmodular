@@ -124,6 +124,7 @@ class CreateControllerCommand extends AbstractCommand
         $this->data['{route}'] = $route;
         $this->data['{url}'] = $url;
         $this->data['{title}'] = $title;
+        $this->data['{header_count}'] = 1;
 
         $entityClass = $this->namespaceEntity.'\\'.$entityName;
         if (class_exists($entityClass)) {
@@ -138,6 +139,7 @@ class CreateControllerCommand extends AbstractCommand
                     continue;
                 }
                 $header = ucwords(str_replace('_', ' ', $field));
+                $this->data['{header_count}']++;
                 $this->data['{fields}'] .= '<td>{{ @item.'.$field.' }}</td>'.PHP_EOL.str_repeat("\t", 5);
                 $this->data['{headers}'] .= '<th>'.$header.'</th>'.PHP_EOL.str_repeat("\t", 4);
                 $this->data['{form}'] .= <<<FORM
@@ -311,7 +313,7 @@ CONTENT;
 
         <include href="{{ 'partial.crud_control',@UIROOT|view }}" />
 
-        <set colspan="2" />
+        <set colspan="{header_count}" />
         <table class="table table-condensed table-bordered table-hover table-striped">
             <thead>
                 <tr>
